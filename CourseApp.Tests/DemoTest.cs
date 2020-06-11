@@ -8,17 +8,24 @@ namespace CourseApp.Tests
         [Fact]
         public void Test1()
         {
-            Assert.True(true);
+            Lion lion = new Lion("0", "Zoo");
+            Wolf wolf = new Wolf("Section for animals", "Zoo");
+
+            lion.MakeNoize();
+            wolf.MakeNoize();
         }
 
         [Theory]
-        [InlineData(0, 0, 0, 0)]
-        [InlineData(0, 2, 1, 2)]
-        [InlineData(1, 2, 1, 3)]
-        public void TestFunctionCalculationVal(double a, double b, double x, double exp)
+        [InlineData("section A", "Zoo")]
+        [InlineData("sample1", "Forest")]
+        [InlineData("sample2", "Sample")]
+        public void TestFunctionCalculationVal(string a, string b)
         {
-            var res = Program.MyFunction(a, b, x);
-            Assert.Equal(exp, res, 3);
+            Lion lion = new Lion(a, b);
+            Wolf wolf = new Wolf(a, b);
+
+            Assert.Equal(wolf.Location, lion.Location);
+            Assert.Equal(wolf.Boundaries, lion.Boundaries);
         }
     }
 }
